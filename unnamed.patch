@@ -1,0 +1,267 @@
+Index: src/test/java/waitTests/BeforeAfterM.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/test/java/waitTests/BeforeAfterM.java	(date 1589479963574)
++++ src/test/java/waitTests/BeforeAfterM.java	(date 1589479963574)
+@@ -0,0 +1,33 @@
++package waitTests;
++
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.chrome.ChromeDriver;
++import org.testng.annotations.AfterMethod;
++import org.testng.annotations.BeforeMethod;
++
++import java.util.concurrent.TimeUnit;
++
++public class BeforeAfterM {
++    public WebDriver driver;
++
++    @BeforeMethod
++    public void beforeTest() {
++        System.setProperty("webdriver.chrome.driver", "C:/drivers/chromedriver.exe");
++        driver = new ChromeDriver();
++        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
++    }
++
++    void sleep() {
++        try {
++            Thread.sleep(3000);
++        } catch (InterruptedException e) {
++            e.printStackTrace();
++        }
++    }
++
++    @AfterMethod
++    public void afterTest() {
++        driver.close();
++        driver.quit();
++    }
++}
+\ No newline at end of file
+Index: src/test/java/waitTests/FluentWaitTests2.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/test/java/waitTests/FluentWaitTests2.java	(date 1589481024066)
++++ src/test/java/waitTests/FluentWaitTests2.java	(date 1589481024066)
+@@ -0,0 +1,44 @@
++package waitTests;
++
++import org.openqa.selenium.By;
++import org.openqa.selenium.NoSuchElementException;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.WebElement;
++import org.openqa.selenium.support.ui.ExpectedConditions;
++import org.openqa.selenium.support.ui.FluentWait;
++import org.testng.annotations.Test;
++
++import java.time.Duration;
++
++import static org.testng.Assert.assertTrue;
++
++public class FluentWaitTests2 extends BeforeAfterM {
++    @Test
++    public void fluentWaitWithExceptionTest() {
++        driver.navigate().to("http://theinternet.przyklady.javastart.pl/dynamic_loading/2");
++
++        WebElement butonStart = driver.findElement(By.cssSelector("#start > button"));
++        butonStart.click();
++        sleep();
++
++        driver.findElement(By.cssSelector("#finish > h4"));
++        //Implementacje interfejsu Wait
++        //Sprawdź, że po jakimś czasie tekst Hello World! jest widoczny.
++        FluentWait<WebDriver> fluentWait = new FluentWait<>(driver);
++        WebElement helloWorldMessage = fluentWait
++                //określamy interwał, z jakim driver ma pytać przeglądarkę czy dany warunek został spełniony
++                .pollingEvery(Duration.ofMillis(250))
++
++                //określa po jakim czasie wyszukiwanie ma zostać przerwane,
++                // jeśli do zadanego czasu warunek nie został spełniony
++                .withTimeout(Duration.ofSeconds(5))
++                .ignoring(NoSuchElementException.class)
++                //until() – w metodzie tej ustawiamy, na jaki typ zdarzenia ma czekać driver.
++                //Do typu zdarzenia wykorzystuje się klasę ExpectedConditions
++                //visibilityOfElementLocated-sprawdza, czy element jest dostępny w DOM oraz widoczny
++                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#finish h4")));
++        sleep();
++        // czy wiyswietlono napis
++        assertTrue(helloWorldMessage.isDisplayed());
++    }
++}
+Index: src/test/java/waitTests/FluentWaitTests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/test/java/waitTests/FluentWaitTests.java	(revision b46d6af3cf2f2fe220657338f7db7771d9e5a6d2)
++++ src/test/java/waitTests/FluentWaitTests.java	(date 1589479963569)
+@@ -3,39 +3,49 @@
+ import org.openqa.selenium.By;
+ import org.openqa.selenium.WebDriver;
+ import org.openqa.selenium.WebElement;
+-import org.openqa.selenium.chrome.ChromeDriver;
+-import org.testng.annotations.AfterMethod;
+-import org.testng.annotations.BeforeMethod;
++import org.openqa.selenium.support.ui.ExpectedConditions;
++import org.openqa.selenium.support.ui.FluentWait;
+ import org.testng.annotations.Test;
+ 
+-public class FluentWaitTests {
++import java.time.Duration;
+ 
+-    private WebDriver driver;
++import static org.testng.Assert.assertFalse;
++import static org.testng.Assert.assertTrue;
+ 
+-    @BeforeMethod
+-    public void beforeTest() {
+-        System.setProperty("webdriver.chrome.driver", "C:/drivers/chromedriver.exe");
+-        driver = new ChromeDriver();
+-        driver.navigate().to("http://theinternet.przyklady.javastart.pl/dynamic_loading/1");
+-    }
++public class FluentWaitTests extends BeforeAfterM {
+ 
+     @Test
+-    public void fluentWaitTest(){
++    public void fluentWaitTest() {
++        driver.navigate().to("http://theinternet.przyklady.javastart.pl/dynamic_loading/1");
++        // znajdż napis "Hello World!"
+         WebElement helloWorldMessage = driver.findElement(By.cssSelector("#finish > h4"));
++
++        // sprawdż czy jest niewidoczny
++        assertFalse(helloWorldMessage.isDisplayed());
++        sleep();
++
++        // Naciśnij na przycisk Start
++        WebElement butonStart = driver.findElement(By.xpath("//*[@id=\"start\"]/button"));
++        butonStart.click();
+         sleep();
+ 
+-    }
+-    private void sleep() {
++        //Implementacje interfejsu Wait
++        //Sprawdź, że po jakimś czasie tekst Hello World! jest widoczny.
++        FluentWait<WebDriver> fluentWait = new FluentWait<>(driver);
++        fluentWait
++                //określamy interwał, z jakim driver ma pytać przeglądarkę czy dany warunek został spełniony
++                .pollingEvery(Duration.ofMillis(250))
+ 
+-        try {
+-            Thread.sleep(3000);
+-        } catch (InterruptedException e) {
+-            e.printStackTrace();
+-        }
+-    }
+-    @AfterMethod
+-    public void afterTest(){
+-        driver.close();
+-        driver.quit();
++                //określa po jakim czasie wyszukiwanie ma zostać przerwane,
++                // jeśli do zadanego czasu warunek nie został spełniony
++                .withTimeout(Duration.ofSeconds(5))
++
++                //until() – w metodzie tej ustawiamy, na jaki typ zdarzenia ma czekać driver.
++                //Do typu zdarzenia wykorzystuje się klasę ExpectedConditions
++                //invisibilityOf() – sprawdza czy element będzie niewidoczny (zniknie)
++                .until(ExpectedConditions.visibilityOf(helloWorldMessage));
++        sleep();
++        // czy wiyswietlono napis
++        assertTrue(helloWorldMessage.isDisplayed());
+     }
+ }
+diff --git target/test-classes/page/objects/FooterPage.class target/test-classes/page/objects/FooterPage.class
+deleted file mode 100644
+index 984cc509e49592a3e46f1859485e6a315ab07766..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git target/test-classes/page/objects/LandingPage.class target/test-classes/page/objects/LandingPage.class
+deleted file mode 100644
+index 8713d9c6087acdb9dc8e23d67a8650e5a8978451..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git target/test-classes/page/objects/LoginPage.class target/test-classes/page/objects/LoginPage.class
+deleted file mode 100644
+index 7d41139dcd8bfd4ef19a5dca8a4a23c1430b6e8b..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git target/test-classes/page/objects/LoginTests.class target/test-classes/page/objects/LoginTests.class
+deleted file mode 100644
+index 0ba5664c474baf1d22e573ee8074ca5870292e2c..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git target/test-classes/page/objects/TopMenuPage.class target/test-classes/page/objects/TopMenuPage.class
+deleted file mode 100644
+index f616dfc6abd9396ba274d3bddcaae6413929cbae..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+Hc$@<O00001
+
+diff --git target/test-classes/WaitTests/FluentWaitTests.class target/test-classes/WaitTests/FluentWaitTests.class
+index ff9c16768297b371217a60f4c0c5cf45e92f139a..22a44d56449a181b5010a5fad9afbbc4f72a66b9
+GIT binary patch
+literal 2222
+zc$|$^YgZFT7=DIZ!e%RiAX2L!+L{2e#ae9%qT$wR0~8aXO4V+%lVo7CyY9|{@n7|v
+z9t`a{{Q><+{m|2QHsOF0F8MH*_crhIyfg3Spa1^+8^8nXYPg1}ZhV2e34DWlaeSM=
+zeLRTcI}P7sS_#t$%;2GhSv=Cn@Npa&rJGaY`4|>7^kA_Qjo-f-mhgiT{dgeiRH7$J
+z^i;!7$g0({3bzu&Y79R!bj=7y$XSN=WNMwEW8SqmLr+#Xd?l<FxSux*Hc9%jZqc;Y
+zO<$;eQ`jLZB4D_h-8F^G^FRj1k{xnKZXE2>3>Qiti5Pk-+_v2f*SD=@9t38YB8_BS
+zzihZ3cix&tz-{h`uxf1Z!lKQq<V|t3LMUA)CrzJXXoo==##=fEq35~2G(vGCDT;IX
+zV<a{208RG%VP;NBcfl7s+)vNaIYZAvM~W(67lEMo8OL#@DTV70W7i^oNpv`6!#va&
+ziXnwH=Z1cfFA0@b|0kSIZkao#j_VlKv4&?c<aFe*!H}*<=}jAktZ?B-?mJvgdj9*`
+zwryIq$SY9nO?tLr)f}@bif?S!v;^fa6~iw&Uf?BzezQbZBB+eaj#Tc&u&Lu$ywdR+
+zZ({gOhlxTAMI9EnjuM6$1`T6u^RciVjz-}}Ul~*>DwU41a;zwu)VZluz(fpNI<{f!
+zsDk3SYURO+;jIoIfewjK#}0^{p%d>OmHJRO$4joyGbN&BnQpxm)rn#Fj6zbWPBmbN
+zJLZlko03w|RvJsHB+>Z9akxKkn?b-Sm5F5P^rLPaI@77i^V%}BNta<DnN{^QY?F$a
+zlRnint={wHR&nNP42fb8<VaAIuCKCd;odUexf*4cpc`T}UnawJ@+8X>As@c#>!(}L
+zSt3{vfoGdFZbe;+u4wO(*OMWBRYype(PGK81J#+5FBSaGz~<be`JHFV3e81Z6t_R2
+zYqhXNG(>duMN;)@jfK!}5*&9+%fhx*ryEQ@O=XYU5DwjQ$;2ryQhA8pOtO_(Yd%hD
+zRNZbV$BV9G(ZPvbAuD+b=7xlI>Wnap?>s`pt$A`5&6cC@s6HfYA#1B8hJ5Ry9jVQk
+z$sRj}a_&?;&!!BU_(R$mrO+uVy|L6>q*KS~r{~kCVBQZoZqV26TJ#BP15>Sz#u3^X
+zG&A*K8~XtEd!)WWV^<{X!6=P-!vHsNi)Mx|$+=BAGac>dAldt|KhU<1cB*&BK04c=
+z_I+J-#P$(yLw0;0-3)bTV|z$MI=zn1BHi-DJ}xjQ#b4-op_CtRapg`wdh58fhyH#H
+z)G@e+E8}$x?cwtcWqJ_ss>--M%6OKt1uo$t1}MKPNMZ;R1UgNyGX!{%u&fb==am0z
+zq`)x=o8WtxLJfB#q+<;<O{Bxv#8<dYh|_pP@op39HS$c6T|35`%rqnuB)QY%Z8Bof
+Th{mt6PP0bR`}FVQc~|%Uk>g`Z
+
+diff --git target/test-classes/WaitTests/ExplicitWaitTests.class target/test-classes/WaitTests/ExplicitWaitTests.class
+index 40e9fd3cad0c7f5fbd5ea846d209c57abf9c89db..11997b1b7ee712d23ef1ab01892799bb7bda990d
+GIT binary patch
+literal 2557
+zc$}413s)0I6#gazHf&bWfZ(GlDri7tu@AMu+VX6*5v@=t)M7WAAsN{0hTT~t_TB!X
+zp3_#S=ky2kU-Xak^v-TVum);#PG;}Ud~@%2zqxahKmY#y4*)mula33>r7)htZ5{97
+zj)wPjv?JGveteL|1SV6MN@E%`DVRED@u8ahD2=<gr{iPfm33cPb16JfFAp_*(vJAk
+zrK1Orbj)KxS)Zn`s31!ze5ST6D_<*W_*}zd4PP*H6n(M9eTMUS&o7x?mAjjk8E}WY
+zBCME8yf7UB#tC{`xI*4xXv+>QG9;(GB4_Bz3zyG@l>+w{tb#)`nY?FP&Z6ZD^<JM$
+z%CZO;&gP$5LN4$?2IkCm)e*LkON|+dp%?g?=X3SSaOzR$N>Sm9A`s+c!gW1qN#VKV
+zXfUEH3FnqftGQxMMh@<CS@w$L@U)6I>-p0nu&Px~q}<Ys!z<jS04cl7?Tv!B&Cq{P
+z`gJh5GJIa~w)kWyrROpndD_rMCBQJ+(nAndtDY~-P&Bnvc;&CcgTN~Byj9?ilIDPn
+zlo$l>wALhP94Rw!5OzXg_LA4<z0kM$tWYP=`-<M9>(-WKU;u**eUwdH3Zr(}_bPm}
+zQ5a{Ya%OA?X1r9#@olbQ)xZ;c$#A7r@-f_;iXL(91}@@~1`1mMk;;{&tmaHpmbq|=
+zy36Hg)qhsoaI9i2;ulEEr#Z(g)?BM1>?gM8O5bw=4QmEUC~FV~*0Ev0K}CaWz(ZBT
+zrU4&;0g0-C5L7a41xbrrD%+9&b5u&9ry8~m)bPx}SNNJitDl{LZ}2S%eOF!y`b(b6
+zFBtd^-y8S=g9d(7vCbS)@eIdQj;3SLIX)<?b6dVNHD3!PuP~$oE+6_t*q1eiTiN_R
+zh*Tv#{_4!ot5Z~DhhB2J5w5i*N|vOf(dS}QsA4znx-R#p94iPou^!0|9o{Ymnwu$V
+z_I0rg3F$GMXpx|5IlZm?Op+oAQB<T_iO_lrkxH)#x472|a@m8B2WHyr4Cf9<P%IHp
+z1FAY!jTfW-xx#RK-xZ!9S$)FkR%9&rp=z1g6_vCuf_d_3OSLr}17<BJAVj-O<+Q<Y
+zsWtg#^S-AXUH^}wr|OKNOnGim)Z6S);clt!D;yzf57rnK4h+?hqqSa##UTaTRi~#W
+zc)fmxA-$Pvp=+ykbGB~0RMYWwp}ks(({0)&`FgS~i{6Muo7oIWHfmL`cYPKkeLbaf
+zax)Z?ez^PT3sAYKCPr40Z0epgUZyvbo{XOD!_UEfCL@6>G<HOjUC7dC!~hIoIC6BA
+zHYcLZD`<<>1~Q3E+YXXT!!OXj{2U#>LL2@C+AdP`%i6gMJ%Oh03{e11AcbCZqmM|P
+z+!tq{9%rP^;#w4QbT8&##6<mb*iZp7=^YrmIFdmA>Mo8l?4XN`W6C%l0WuB1{gGXC
+zGrU00vRdfDiRb8>yLNR4Cx64Kr3iew0nQ~)C3kU#$iK0JvrX#5&}lqJ!dxKI7ik>C
+z7}2^xq-SV#j_9ru*>%!YrSx`8wVqNJ9@G37r89<cT&FQXyDsBRyhTE;;t1i#NSsFM
+z??kEJ*h_t;epcPFw&xgP<2>7^?oo0Da@a}EGUTGEZ1=yEy&3Jf6^-wrNKc(+r|FND
+H-O>3ERyU>+
+
