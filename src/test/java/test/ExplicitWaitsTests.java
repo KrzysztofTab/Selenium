@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class ExplicitWaitsTests {
+
     private WebDriver driver;
 
     @BeforeMethod
@@ -23,26 +24,27 @@ public class ExplicitWaitsTests {
     }
 
     @Test
-    public void waitForDisappearingElement() {
-
-        // znajdz checkbox
+    public void waitForPresenceOfTheElement() {
         WebElement checkbox = driver.findElement(By.id("checkbox"));
 
-        // sprawdź czy jest odznaczony
         assertTrue(checkbox.isDisplayed());
         assertFalse(checkbox.isSelected());
 
-        // cliknij w button " Remowe"
-        WebElement removeButton = driver.findElement(By.id("btn"));
-        removeButton.click();
+        WebElement removeOrAddButton = driver.findElement(By.id("btn"));
+        removeOrAddButton.click();
 
-        //Sprawdź, że po jakimś czasie pojawi się tekst
-        WebDriverWait webDriverWait = new WebDriverWait(driver, 15);
-        webDriverWait.until(ExpectedConditions.invisibilityOf(checkbox));
+        WaitUntil waitUntil = new WaitUntil(driver);
+        waitUntil.waitUntilElementIsInvisible(checkbox);
 
-        // Sprawdź,tekst "It's gone!"
         WebElement messageLabel = driver.findElement(By.id("message"));
         assertEquals(messageLabel.getText(), "It's gone!");
+
+        removeOrAddButton.click();
+
+        checkbox = waitUntil.waitUntilPresenceOfElementLocated(By.id("checkbox"));
+
+        assertTrue(checkbox.isDisplayed());
+        assertFalse(checkbox.isSelected());
     }
 
     @AfterMethod
@@ -52,4 +54,3 @@ public class ExplicitWaitsTests {
     }
 
 }
-

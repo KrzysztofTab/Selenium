@@ -1,6 +1,5 @@
 package test;
 
-<<<<<<< HEAD
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -52,9 +51,4 @@ public class ExplicitWaitTests {
         driver.close();
         driver.quit();
     }
-
 }
-=======
-public class ExplicitWaitTests {
-}
->>>>>>> origin/master
