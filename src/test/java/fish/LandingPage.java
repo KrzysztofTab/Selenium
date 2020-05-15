@@ -1,4 +1,4 @@
-package pageObjects;
+package fish;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,7 +12,7 @@ public class LandingPage {
     @FindBy(css = "#Content a")
     private WebElement enterStoreLink;
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public LandingPage(WebDriver driver) {
         this.driver = driver;
