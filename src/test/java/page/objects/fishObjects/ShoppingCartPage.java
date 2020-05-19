@@ -1,4 +1,4 @@
-package page.objects.fish.objects;
+package page.objects.fishObjects;
 
 
 import org.openqa.selenium.WebElement;

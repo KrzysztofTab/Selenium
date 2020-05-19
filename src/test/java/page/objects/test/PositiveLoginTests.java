@@ -2,10 +2,7 @@ package page.objects.test;
 
 
 import org.testng.annotations.Test;
-import page.objects.page.FooterPage;
-import page.objects.page.LandingPage;
-import page.objects.page.LoginPage;
-import page.objects.page.TopMenuPage;
+import page.objects.pageObjects.LandingPage;
 
 import static org.testng.Assert.assertTrue;
 
@@ -15,18 +12,15 @@ public class PositiveLoginTests extends TestBase {
     public void asUserLoginUsingValidLoginAndPassword() {
 
         LandingPage landingPage = new LandingPage();
-        landingPage.clickOnEnterStoreLink();
+        boolean isBannerAfterLoginDisplayed = landingPage
+                .clickOnEnterStoreLink()
+                .clickOnSignInLink()
+                .typeIntoUserNameField("j2ee")
+                .typeIntoPasswordField("j2ee")
+                .clickOnLoginButton()
+                .isBannerAfterLoginDisplayed();
 
-        TopMenuPage topMenuPage = new TopMenuPage();
-        topMenuPage.clickOnSignInLink();
-
-        LoginPage loginPage = new LoginPage();
-        loginPage.typeIntoUserNameField("j2ee");
-        loginPage.typeIntoPasswordField("j2ee");
-        loginPage.clickOnLoginButton();
-        FooterPage footerPage = new FooterPage();
-
-        assertTrue(footerPage.isBannerAfterLoginDisplayed());
+        assertTrue(isBannerAfterLoginDisplayed);
     }
 
 }

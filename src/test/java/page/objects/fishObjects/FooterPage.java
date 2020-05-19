@@ -1,4 +1,4 @@
-package page.objects.page;
+package page.objects.fishObjects;
 
 
 import org.openqa.selenium.WebElement;
@@ -22,4 +22,3 @@ public class FooterPage {
     }
 
 }
-

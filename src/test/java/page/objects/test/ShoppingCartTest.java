@@ -1,7 +1,7 @@
 package page.objects.test;
 
 import org.testng.annotations.Test;
-import page.objects.fish.objects.*;
+import page.objects.fishObjects.*;
 
 import static org.testng.Assert.assertEquals;
 

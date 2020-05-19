@@ -17,12 +17,20 @@ public class TestBase {
 
     @AfterMethod
     public void afterTest() {
+
         DriverManager.disposeDriver();
     }
 
+    void sleep() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
-  /*oid sleep() {
+  /*void sleep() {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
