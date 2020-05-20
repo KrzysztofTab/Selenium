@@ -18,6 +18,9 @@ public class BrowserFactory {
             case IE:
                 System.setProperty("webdriver.ie.driver", "C:/drivers/IEDriverServer.exe");
                 return new InternetExplorerDriver();
+            case EDGE:
+                System.setProperty("webdriver.edge.driver", "C:/drivers/msedgedriver.exe");
+
             default:
                 throw new IllegalStateException("Unknown browser type! Please check your configuration");
         }

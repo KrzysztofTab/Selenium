@@ -1,12 +1,15 @@
 package page.objects.fishObjects;
 
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import page.objects.driver.manager.DriverManager;
+import page.objects.waits.WaitForElement;
 
 public class LoginPage {
+    private final Logger logger = LogManager.getRootLogger();
 
     @FindBy(name = "username")
     private WebElement usernameField;
@@ -24,27 +27,43 @@ public class LoginPage {
     private WebElement btnFishImage;
 
     public LoginPage() {
+
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
-    public void typeIntoUserNameField(String username) {
+    public LoginPage typeIntoUserNameField(String username) {
+        WaitForElement.waitUntilElementIsVisible(usernameField);
         usernameField.sendKeys(username);
+        logger.info("Typed into User Name Field {}", username);
+        return this;
     }
 
-    public void typeIntoPasswordField(String password) {
+    public LoginPage typeIntoPasswordField(String password) {
+        passwordField.clear();
         passwordField.sendKeys(password);
+        logger.info("Typed into Password Field {}", password);
+        return this;
     }
 
-    public void clickOnLoginButton() {
+
+    public FooterPage clickOnLoginButton() {
+
         signOnButton.click();
+        logger.info("Clicked on Login Button");
+        return new FooterPage();
     }
 
     public String getWarningMessage() {
+        WaitForElement.waitUntilElementIsVisible(messageLabel);
         String warningText = messageLabel.getText();
+        logger.info("Returned warning message was: {}", warningText);
         return warningText;
     }
 
-    public void clickOnFishImageButton() {
+    public FishListPage clickOnFishImageButton() {
+        WaitForElement.waitUntilElementIsVisible(btnFishImage);
         btnFishImage.click();
+        logger.info("Clicked on fish image");
+        return new FishListPage();
     }
 }
