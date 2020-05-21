@@ -1,39 +1,36 @@
 package page.objects.test;
 
+import configuration.ConfigurationProperties;
+import configuration.PropertiesLoader;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import page.objects.driver.manager.DriverManager;
 import page.objects.driver.manager.DriverUtils;
 
+import java.util.Properties;
+
+import static page.objects.navigation.ApplicationURLs.APPLICATION_URL;
 
 public class TestBase {
+
+    @BeforeClass
+    public void beforeClass() {
+        PropertiesLoader propertiesLoader = new PropertiesLoader();
+        Properties propertiesFromFile = propertiesLoader.getPropertiesFromFile("configuration.properties");
+        ConfigurationProperties.setProperties(propertiesFromFile);
+    }
 
     @BeforeMethod
     public void beforeTest() {
         DriverManager.getWebDriver();
         DriverUtils.setInitialConfiguration();
-        DriverUtils.navigateToPage("http://przyklady.javastart.pl/jpetstore/");
+        DriverUtils.navigateToPage(APPLICATION_URL);
     }
 
     @AfterMethod
     public void afterTest() {
-
         DriverManager.disposeDriver();
     }
 
-    void sleep() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 }
-
-  /*void sleep() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    } */
