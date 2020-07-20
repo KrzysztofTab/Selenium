@@ -1,0 +1,368 @@
+Index: Wyszukiwania/selenium-intro.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Wyszukiwania/selenium-intro.iml	(revision ef9b9c26ce9d3d56a31b2599df472b3f5c833cd1)
++++ Wyszukiwania/selenium-intro.iml	(date 1595273984697)
+@@ -5,6 +5,7 @@
+     <output-test url="file://$MODULE_DIR$/target/test-classes" />
+     <content url="file://$MODULE_DIR$">
+       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
++      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+       <excludeFolder url="file://$MODULE_DIR$/target" />
+     </content>
+     <orderEntry type="inheritedJdk" />
+@@ -33,5 +34,15 @@
+     <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.14.0" level="project" />
+     <orderEntry type="library" name="Maven: org.testng:testng:7.0.0" level="project" />
+     <orderEntry type="library" name="Maven: com.beust:jcommander:1.72" level="project" />
++    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-java:5.5.0" level="project" />
++    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-core:5.5.0" level="project" />
++    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-gherkin:5.5.0" level="project" />
++    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-gherkin-vintage:5.5.0" level="project" />
++    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:tag-expressions:2.0.4" level="project" />
++    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-expressions:8.3.1" level="project" />
++    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:datatable:3.3.0" level="project" />
++    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-plugin:5.5.0" level="project" />
++    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:docstring:5.5.0" level="project" />
++    <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.0" level="project" />
+   </component>
+ </module>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml	(date 1595273984813)
++++ .idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml	(date 1595273984813)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.apiguardian:apiguardian-api:1.1.0">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__io_cucumber_tag_expressions_2_0_4.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__io_cucumber_tag_expressions_2_0_4.xml	(date 1595273984813)
++++ .idea/libraries/Maven__io_cucumber_tag_expressions_2_0_4.xml	(date 1595273984813)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: io.cucumber:tag-expressions:2.0.4">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/tag-expressions/2.0.4/tag-expressions-2.0.4.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/tag-expressions/2.0.4/tag-expressions-2.0.4-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/tag-expressions/2.0.4/tag-expressions-2.0.4-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__io_cucumber_cucumber_java_5_5_0.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__io_cucumber_cucumber_java_5_5_0.xml	(date 1595273984782)
++++ .idea/libraries/Maven__io_cucumber_cucumber_java_5_5_0.xml	(date 1595273984782)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: io.cucumber:cucumber-java:5.5.0">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-java/5.5.0/cucumber-java-5.5.0.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-java/5.5.0/cucumber-java-5.5.0-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-java/5.5.0/cucumber-java-5.5.0-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__io_cucumber_cucumber_gherkin_vintage_5_5_0.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__io_cucumber_cucumber_gherkin_vintage_5_5_0.xml	(date 1595273984782)
++++ .idea/libraries/Maven__io_cucumber_cucumber_gherkin_vintage_5_5_0.xml	(date 1595273984782)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: io.cucumber:cucumber-gherkin-vintage:5.5.0">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-gherkin-vintage/5.5.0/cucumber-gherkin-vintage-5.5.0.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-gherkin-vintage/5.5.0/cucumber-gherkin-vintage-5.5.0-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-gherkin-vintage/5.5.0/cucumber-gherkin-vintage-5.5.0-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__io_cucumber_cucumber_gherkin_5_5_0.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__io_cucumber_cucumber_gherkin_5_5_0.xml	(date 1595273984766)
++++ .idea/libraries/Maven__io_cucumber_cucumber_gherkin_5_5_0.xml	(date 1595273984766)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: io.cucumber:cucumber-gherkin:5.5.0">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-gherkin/5.5.0/cucumber-gherkin-5.5.0.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-gherkin/5.5.0/cucumber-gherkin-5.5.0-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-gherkin/5.5.0/cucumber-gherkin-5.5.0-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__io_cucumber_cucumber_expressions_8_3_1.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__io_cucumber_cucumber_expressions_8_3_1.xml	(date 1595273984766)
++++ .idea/libraries/Maven__io_cucumber_cucumber_expressions_8_3_1.xml	(date 1595273984766)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: io.cucumber:cucumber-expressions:8.3.1">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-expressions/8.3.1/cucumber-expressions-8.3.1.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-expressions/8.3.1/cucumber-expressions-8.3.1-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-expressions/8.3.1/cucumber-expressions-8.3.1-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__io_cucumber_cucumber_core_5_5_0.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__io_cucumber_cucumber_core_5_5_0.xml	(date 1595273984751)
++++ .idea/libraries/Maven__io_cucumber_cucumber_core_5_5_0.xml	(date 1595273984751)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: io.cucumber:cucumber-core:5.5.0">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-core/5.5.0/cucumber-core-5.5.0.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-core/5.5.0/cucumber-core-5.5.0-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-core/5.5.0/cucumber-core-5.5.0-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: Wyszukiwania/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Wyszukiwania/pom.xml	(revision ef9b9c26ce9d3d56a31b2599df472b3f5c833cd1)
++++ Wyszukiwania/pom.xml	(date 1595273224735)
+@@ -24,6 +24,12 @@
+             <artifactId>testng</artifactId>
+             <version>7.0.0</version>
+         </dependency>
++        <dependency>
++            <groupId>io.cucumber</groupId>
++            <artifactId>cucumber-java</artifactId>
++            <version>5.5.0</version>
++            <scope>test</scope>
++        </dependency>
+     </dependencies>
+     <build>
+         <plugins>
+Index: .idea/libraries/Maven__io_cucumber_docstring_5_5_0.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__io_cucumber_docstring_5_5_0.xml	(date 1595273984798)
++++ .idea/libraries/Maven__io_cucumber_docstring_5_5_0.xml	(date 1595273984798)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: io.cucumber:docstring:5.5.0">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/docstring/5.5.0/docstring-5.5.0.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/docstring/5.5.0/docstring-5.5.0-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/docstring/5.5.0/docstring-5.5.0-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: Wyszukiwania/src/test/java/Chrome.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Wyszukiwania/src/test/java/Chrome.java	(revision ef9b9c26ce9d3d56a31b2599df472b3f5c833cd1)
++++ Wyszukiwania/src/test/java/Chrome.java	(date 1595276205426)
+@@ -1,3 +1,6 @@
++import io.cucumber.java.en.Given;
++import io.cucumber.java.en.Then;
++import io.cucumber.java.en.When;
+ import org.openqa.selenium.By;
+ import org.openqa.selenium.WebDriver;
+ import org.openqa.selenium.chrome.ChromeDriver;
+@@ -13,6 +16,7 @@
+ 
+     private WebDriver driver;
+ 
++    @Given("Opening the browser")
+     @BeforeMethod
+     public void beforeTest() {
+         System.setProperty("webdriver.chrome.driver", "C:/Drivers/chromedriver.exe");
+@@ -23,7 +27,7 @@
+         driver.manage().window().maximize();
+         driver.navigate().to("http://google.pl");
+     }
+-
++    @When("Entering the searched page Filmweb")
+     @Test
+     public void myFirstTest() {
+ 
+@@ -32,7 +36,7 @@
+         sleep();
+         String pageTitle = driver.getTitle();
+         assertTrue(pageTitle.contains("Filmweb"));
+-        sleep();
++
+     }
+ 
+     private void sleep() {
+@@ -42,6 +46,7 @@
+             e.printStackTrace();
+         }
+     }
++    @Then("Result and close")
+     @AfterMethod
+     public void afterTest() {
+         driver.close();
+Index: .idea/libraries/Maven__io_cucumber_datatable_3_3_0.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__io_cucumber_datatable_3_3_0.xml	(date 1595273984798)
++++ .idea/libraries/Maven__io_cucumber_datatable_3_3_0.xml	(date 1595273984798)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: io.cucumber:datatable:3.3.0">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/datatable/3.3.0/datatable-3.3.0.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/datatable/3.3.0/datatable-3.3.0-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/datatable/3.3.0/datatable-3.3.0-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: Wyszukiwania/src/test/resources/Steps.feature
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Wyszukiwania/src/test/resources/Steps.feature	(date 1595275272448)
++++ Wyszukiwania/src/test/resources/Steps.feature	(date 1595275272448)
+@@ -0,0 +1,5 @@
++Feature:Searching for the "FilmWeb" page
++    Scenario:
++      Given Opening the browser
++      When Entering the searched page Filmweb
++      Then Result and close
+\ No newline at end of file
+Index: .idea/libraries/Maven__io_cucumber_cucumber_plugin_5_5_0.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__io_cucumber_cucumber_plugin_5_5_0.xml	(date 1595273984798)
++++ .idea/libraries/Maven__io_cucumber_cucumber_plugin_5_5_0.xml	(date 1595273984798)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: io.cucumber:cucumber-plugin:5.5.0">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-plugin/5.5.0/cucumber-plugin-5.5.0.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-plugin/5.5.0/cucumber-plugin-5.5.0-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-plugin/5.5.0/cucumber-plugin-5.5.0-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+diff --git Wyszukiwania/target/test-classes/Chrome.class Wyszukiwania/target/test-classes/Chrome.class
+index e416476105475d874eb1ec2c5040cd237891896f..6fe4210b4dfead664da28b4283fd05eff28462df
+GIT binary patch
+literal 3057
+zc$|$^`BxKH6#gazh9o0sK&;}DD%gO^*s4`QTam?r5!6IdwcBL!NJb|!VP?W&?Y^&e
+z-}m)rds>C|w0}VVsGi>UCJ@lD<ebcVbKhOQyT1ANzd!#0a2UUY5kQTMpn_V|NmzeH
+zo77ZOvvTTa<_gn233bN|%kUnOP!sPMt4F<rO;aqBb&N^obm@7=F0d~DtsY?st$p2U
+zzj$?3|Fq1?rdb#Y*2!p4(1`U*j3sAWj};_DT;`p1>>_i#83{+?iA5})V_3PKyD1%a
+zlVn6C+-EyEl~h?1n(8u>Sw^W)hNSk1#m5=O2GoSG5iK${DYyrl$!VW~Ha>a@I}+8@
+zrCG*T(i1@|w#wM1U^{k5*tQ}!=`CoMmLmfl@s5=>w~ZD(!?s+qa4&Ys*rlKi?GoD8
+zBqgEVGYZTud9>|Z)mEy^+fxhw7Y?BVoig?)*o%GSmxy)AGfY*tExqJ8%<@z&c7duy
+zf}9-a8y)FS@_?<#O75uGFXMg%58!}=-D?9Tp}{B=O+z<4b0)2Elf&`hRZOkfYaZf5
+z3LeB^%FvWyW$h^m@l~Ui7Mvt~6x}j<6ddEd)V3BO%1=R?HVVcy#w+L{1rOr{5iM=f
+z$Y~xG$lg`WkNCWl?w)#_q`t~~Ua?zMbGDr`Sy$1FpdSM=1{IvbBjnIp)kz3=wuFsU
+z+K`WeVF}Vi7zvz_F`{4;XC<^$(|wY9IcRAG;Z3y$t}Y~c>b!y^QZyOHDP996D^O-7
+zbjO#ISvFW@S(*)F1hWF7FRwXCHc?`h&g$_fmGGcp7HGspa0!=XJf`4rJRxEG%6chh
+zF0-<y*$ma_*7)T_bqf?YuJ<Vg8n2N$x0ERuUYMqjt{}@vwXVrnk-I*wAcs6D&M_}V
+z^-keyj#rs>VO+sg8K!~)tfgaBFpvi73QsfmIB1P8i|kSuMNG(W6u2OVHgJzU=6b~0
+z>$)_PC4@DxNjW7#6O3Q#7%NYT$ZQzXn2~Xf`|<P=7^%F&v@GWz?iiEt3<a}tIAnRu
+zaY{vxWe28pCdO76*YTW!=XpFDi{yis^fdiy%F%SuCNC;@NyJJwZC6lUQSd6K1Sd*-
+zCItKJECFmx7#15T6*A08X&D~CXu{Stb4+s#{$3^qy}ZFEWx}8OJ>+JFjoS`Ok@FHZ
+zpD$T_h>jVqLHxazWqVqAy0#_^Th&Xtu%QaCn5CYgMzTmv?WAV%KsAk0-B2cCUY^A=
+zjy>h_JD@$WD8O1pt9nuxKf}Ddoh2=i!pxxIxSo$DRHS>OTn^E@i$TJcs*uuofoSId
+z5BEG2muZfkXW1Cn87tR44f*AOaRj79BGa+N$|)qabs}kJv|>5TA#I%ad@rhlO!*+!
+zpJ#5#^kSNojfo7?FkKE(FW0#cs&LXSIXWXxNG9T^vx{q&pbS|SbNWnPz?3+-azR$^
+zmb&?&9IgyOx)L_hM-o8OkbfM|u9o)nxkS&`=uM?n;?&ODkZ#f@fY<3+Cy0%BgPw}d
+zfH(1$Q1mvP288ep1jX68s2mN=B9iX>3mY!pM$;c??))9ibJ!wb4l!zd?EVe$Idlb)
+zUUYJhKaSAdE=b3zCVJ=47eEEb7BU93pdOphMELhnyPUvQoW-_9;Ler7y(2&e@Genr
+zxOflm3&bBRLR>4taf(}v4$b299L@z0{2Lc8)<o0EIa~~2>De5fB!IV&@j+5*5__WQ
+zTQFu}--&Z4A=^bUZNmYy<2ZI>5OIOC#W!2Vc^qMUh>r-`JmQai#Gl|(p)$LWpgg^C
+z(Z*(!W-;|EHTs@gc=o37yAB~5HZ=l43-~bGOEi_J`^Z8U8nA!CdYF>+89py3*2nP$
+z{bdA(WL)Q&{Bj{q1Ld-4@|}KRK1DA}i*nOImVtw0?GU2$-BHO$(;fNv%J=STd?SRv
+j70>VRy$D&5inJ9!)P)FmD}JQ)D6K!y+E44xb)o+OHaH;x
+
