@@ -1,3 +1,6 @@
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,6 +16,7 @@ public class Chrome {
 
     private WebDriver driver;
 
+    @Given("Opening the browser")
     @BeforeMethod
     public void beforeTest() {
         System.setProperty("webdriver.chrome.driver", "C:/Drivers/chromedriver.exe");
@@ -23,7 +27,7 @@ public class Chrome {
         driver.manage().window().maximize();
         driver.navigate().to("http://google.pl");
     }
-
+    @When("Entering the searched page Filmweb")
     @Test
     public void myFirstTest() {
 
@@ -32,7 +36,7 @@ public class Chrome {
         sleep();
         String pageTitle = driver.getTitle();
         assertTrue(pageTitle.contains("Filmweb"));
-        sleep();
+
     }
 
     private void sleep() {
@@ -42,6 +46,7 @@ public class Chrome {
             e.printStackTrace();
         }
     }
+    @Then("Result and close")
     @AfterMethod
     public void afterTest() {
         driver.close();
